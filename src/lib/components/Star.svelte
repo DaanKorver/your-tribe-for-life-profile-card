@@ -13,10 +13,6 @@
 	const minPulse = 1.8;
 	const pulseDistance = 0.6;
 	const maxPulse = minPulse + pulseDistance;
-
-	let hovering = false;
-
-	$: console.log(hovering);
 </script>
 
 <Tooltip x={cx} y={cy} text="Tooltip komt hier" visible={$starState.active === `${cx}${cy}`} />

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { starState } from '$lib/state/star';
+
 	import Star from '../Star.svelte';
 
 	const starPositions = [
@@ -23,6 +25,7 @@
 		height="923"
 		viewBox="0 0 901 923"
 		fill="none"
+		class={`${$starState.hovering ? 'hover' : ''}`}
 		xmlns="http://www.w3.org/2000/svg"
 		style="--line: rgba(255,255,255,0.5); --star: rgba(255,255,255,1); --line-width: 4;"
 	>
@@ -154,5 +157,17 @@
 		max-width: 60rem;
 		max-height: 40rem;
 		overflow: visible;
+	}
+
+	:global(svg.hover > g:not(.blur)) {
+		opacity: 0;
+	}
+
+	:global(svg.hover > g:not(.blur)) {
+		opacity: 0.5;
+	}
+
+	:global(svg.hover > g:not(.blur) > .pulsing) {
+		opacity: 0;
 	}
 </style>

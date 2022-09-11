@@ -18,8 +18,6 @@
 	const width: number = 75;
 	const height: number = 75;
 
-	const origin = `${cx - width / 2}px ${cy - height / 2}px`;
-
 	function transition() {
 		detailState.set({
 			title: 'About me',
@@ -73,10 +71,10 @@
 	{height}
 	x={cx - width / 2}
 	y={cy - height / 2}
-	on:mouseover={() => starState.set({ active: `${cx}${cy}`, hovering: true, origin: origin })}
-	on:focus={() => starState.set({ active: `${cx}${cy}`, hovering: true, origin: origin })}
-	on:mouseout={() => starState.set({ active: '', hovering: false, origin: origin })}
-	on:blur={() => starState.set({ active: '', hovering: false, origin: origin })}
+	on:mouseover={() => starState.set({ active: `${cx}${cy}`, hovering: true })}
+	on:focus={() => starState.set({ active: `${cx}${cy}`, hovering: true })}
+	on:mouseout={() => starState.set({ active: '', hovering: false })}
+	on:blur={() => starState.set({ active: '', hovering: false })}
 />
 
 <style>

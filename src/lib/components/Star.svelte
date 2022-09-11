@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Tooltip from './Tooltip.svelte';
 	import { starState } from '$lib/state/star';
+	import { detailState } from '$lib/state/detail';
 
 	export let cx: number;
 	export let cy: number;
@@ -13,6 +14,17 @@
 	const minPulse = 1.8;
 	const pulseDistance = 0.6;
 	const maxPulse = minPulse + pulseDistance;
+
+	const width: number = 75;
+	const height: number = 75;
+
+	function transition() {
+		detailState.set({
+			title: 'About me',
+			content:
+				'Hoi ik ben Daan. Ik ben een 22-jarige webdeveloper die FDND studeert. Ik werk bij Level30Wizards als Frontend Engineer en focus mij vooral op 3D Web development.'
+		});
+	}
 </script>
 
 <Tooltip x={cx} y={cy} text="Tooltip komt hier" visible={$starState.active === `${cx}${cy}`} />
@@ -48,16 +60,17 @@
 </g>
 <rect
 	class="tooltip-wrapper"
-	on:click={() => console.log('event')}
+	tabindex={$detailState.title ? -1 : 0}
+	on:click={transition}
 	on:keydown={(e) => {
 		if (e.key === 'Enter') {
-			console.log('event');
+			transition();
 		}
 	}}
-	width="75"
-	height="75"
-	x={cx - 75 / 2}
-	y={cy - 75 / 2}
+	{width}
+	{height}
+	x={cx - width / 2}
+	y={cy - height / 2}
 	on:mouseover={() => starState.set({ active: `${cx}${cy}`, hovering: true })}
 	on:focus={() => starState.set({ active: `${cx}${cy}`, hovering: true })}
 	on:mouseout={() => starState.set({ active: '', hovering: false })}

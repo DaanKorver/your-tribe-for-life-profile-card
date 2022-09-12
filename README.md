@@ -1,18 +1,17 @@
-# create-svelte
+# Your Tribe for Life visitekaartje
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Dit is mijn your tribe your life visitekaartje
 
-## Creating a project
+![Virgo](/assets/your-tribe-for-life-profile-card-two.vercel.app_.png)
 
-If you're seeing this, you've probably already done this step. Congrats!
+[Live versie](https://your-tribe-for-life-profile-card-two.vercel.app/)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Beschrijving
+* HTML
+* CSS
+* JS
+* SvelteKit
+* Prismic.io
 
 ## Developing
 
@@ -36,3 +35,6 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Bronnen
+* [Prismic svelte guide](https://prismic.io/docs/technologies/svelte)

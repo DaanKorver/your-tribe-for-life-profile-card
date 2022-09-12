@@ -6,6 +6,7 @@
 	export let cx: number;
 	export let cy: number;
 	export let radius: string;
+	export let data: any;
 
 	const maxSpeed = 1.5;
 	const minSpeed = 0.9;
@@ -18,16 +19,26 @@
 	const width: number = 75;
 	const height: number = 75;
 
+	const [title, content] = data;
+
+	const disabled = !title ? true : false;
+
 	function transition() {
+		if (disabled) return;
 		detailState.set({
-			title: 'About me',
-			content:
-				'Hoi ik ben Daan. Ik ben een 22-jarige webdeveloper die FDND studeert. Ik werk bij Level30Wizards als Frontend Engineer en focus mij vooral op 3D Web development.'
+			title: title[0].text,
+			content: content
 		});
 	}
 </script>
 
-<Tooltip x={cx} y={cy} text="Tooltip komt hier" visible={$starState.active === `${cx}${cy}`} />
+<Tooltip
+	x={cx}
+	y={cy}
+	text={title ? title[0].text : 'Ster niet beschikbaar'}
+	visible={$starState.active === `${cx}${cy}`}
+	{disabled}
+/>
 
 <g
 	class={`${$starState.active == `${cx}${cy}` ? 'blur' : ''}`}

@@ -3,6 +3,7 @@
 	export let y: number;
 	export let text: string;
 	export let visible: boolean;
+	export let disabled: boolean = true;
 </script>
 
 <foreignObject
@@ -10,7 +11,7 @@
 	y={y - 100}
 	width="100"
 	height="150"
-	class={`tooltip ${visible ? 'show' : ''}`}
+	class={`tooltip ${visible && 'show'} ${disabled && 'disabled'}`}
 >
 	<html:button class="button">{text}</html:button>
 </foreignObject>
@@ -39,5 +40,13 @@
 
 	.tooltip.show {
 		opacity: 1;
+	}
+
+	.tooltip.disabled {
+		color: #9d9d9d;
+	}
+
+	.tooltip.disabled .button {
+		background-color: rgb(235, 235, 228);
 	}
 </style>

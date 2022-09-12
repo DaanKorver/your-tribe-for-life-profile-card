@@ -3,6 +3,8 @@
 
 	import Star from '../Star.svelte';
 
+	export let starData: any[];
+
 	const starPositions = [
 		[889, 12],
 		[817, 285],
@@ -17,6 +19,13 @@
 		[255, 603],
 		[12, 765]
 	];
+
+	let stars: any[] = [];
+
+	for (let i = 0; i < starPositions.length; i++) {
+		const [x, y] = starPositions[i];
+		starData[i] ? stars.push({ ...starData[i], x, y }) : stars.push({ x, y });
+	}
 </script>
 
 <div>
@@ -29,8 +38,8 @@
 		xmlns="http://www.w3.org/2000/svg"
 		style="--line: rgba(255,255,255,0.5); --star: rgba(255,255,255,1); --line-width: 4;"
 	>
-		{#each starPositions as star}
-			<Star cx={star[0]} cy={star[1]} radius="8" />
+		{#each stars as star}
+			<Star cx={star.x} cy={star.y} data={[star.title, star.content]} radius="8" />
 		{/each}
 		<line
 			x1="887.939"

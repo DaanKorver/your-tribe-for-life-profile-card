@@ -1,5 +1,7 @@
 <script lang="ts">
+	import * as prismicH from '@prismicio/helpers';
 	import { detailState, type detailProps } from '$lib/state/detail';
+	import PrismicRichText from './PrismicRichText.svelte';
 
 	export let data: detailProps;
 
@@ -11,7 +13,7 @@
 	>
 	<div>
 		<h1>{title}</h1>
-		<p>{content}</p>
+		<PrismicRichText {content} />
 	</div>
 </section>
 
@@ -41,6 +43,20 @@
 
 	p {
 		font-size: 1.25rem;
+	}
+
+	:global(p) {
+		margin-bottom: 1rem;
+		line-height: 1.25;
+	}
+
+	:global(ul) {
+		margin-left: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	:global(a) {
+		color: #0096ff;
 	}
 
 	button {

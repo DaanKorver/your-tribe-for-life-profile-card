@@ -5,6 +5,10 @@
 	import { detailState } from '$lib/state/detail';
 	import Detail from '$lib/components/Detail.svelte';
 	import { fade } from 'svelte/transition';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	const { stars: starData } = data;
 </script>
 
 {#if $detailState.content}
@@ -12,5 +16,5 @@
 		<Detail data={$detailState} />
 	</div>
 {/if}
-<Virgo />
+<Virgo {starData} />
 <Background />
